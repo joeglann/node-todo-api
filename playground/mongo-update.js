@@ -9,15 +9,15 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
     console.log('connected');
 
     db.collection('Todos').findOneAndUpdate({
-        //filter, 
-        //update,
         //normally filter on _id: new ObjectID('id'),
         text: 'walk the dog'
     }, {
+        //here we update fields
     $set: {
         completed: true 
         }
     }, {
+        //here we want to return update, not the original
         returnOriginal: false
     }).then((result) => {
         console.log(result);
